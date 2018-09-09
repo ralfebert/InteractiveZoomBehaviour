@@ -8,20 +8,38 @@
 
 /* Begin PBXBuildFile section */
 		BF_230648118126 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FR_612882647252 /* Assets.xcassets */; };
+		BF_257453652998 /* ContentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FR_320650382751 /* ContentViewController.xib */; };
+		BF_326149600812 /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_661912933221 /* ContentViewController.swift */; };
 		BF_473506932218 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = VG_557980261560 /* LaunchScreen.storyboard */; };
-		BF_622848222197 = {isa = PBXBuildFile; fileRef = FR_744219332771 /* TransitionDemo.app */; };
+		BF_789702287956 /* StartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FR_784946336042 /* StartViewController.xib */; };
 		BF_807652834059 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_513551976209 /* AppDelegate.swift */; };
+		BF_859934745219 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_721739638499 /* StartViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FR_320650382751 /* ContentViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContentViewController.xib; sourceTree = "<group>"; };
 		FR_513551976209 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FR_557980261560 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FR_612882647252 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FR_661912933221 /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
+		FR_721739638499 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		FR_744219332771 /* TransitionDemo.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = TransitionDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FR_784946336042 /* StartViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StartViewController.xib; sourceTree = "<group>"; };
 		FR_821202004271 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
+		G_2052748511162 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FR_721739638499 /* StartViewController.swift */,
+				FR_784946336042 /* StartViewController.xib */,
+				FR_661912933221 /* ContentViewController.swift */,
+				FR_320650382751 /* ContentViewController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		G_7442193327718 /* TransitionDemo */ = {
 			isa = PBXGroup;
 			children = (
@@ -29,6 +47,7 @@
 				FR_612882647252 /* Assets.xcassets */,
 				FR_821202004271 /* Info.plist */,
 				VG_557980261560 /* LaunchScreen.storyboard */,
+				G_2052748511162 /* Controller */,
 			);
 			path = TransitionDemo;
 			sourceTree = "<group>";
@@ -98,7 +117,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF_230648118126 /* Assets.xcassets in Resources */,
+				BF_257453652998 /* ContentViewController.xib in Resources */,
 				BF_473506932218 /* LaunchScreen.storyboard in Resources */,
+				BF_789702287956 /* StartViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,6 +131,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF_807652834059 /* AppDelegate.swift in Sources */,
+				BF_326149600812 /* ContentViewController.swift in Sources */,
+				BF_859934745219 /* StartViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
