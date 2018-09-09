@@ -1,0 +1,9 @@
+name: TransitionDemo
+options:
+  bundleIdPrefix: com.example
+targets:
+  TransitionDemo:
+    type: application
+    platform: iOS
+    deploymentTarget: "11.0"
+    sources: [TransitionDemo]
