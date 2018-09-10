@@ -6,19 +6,29 @@ class ZoomBehaviour : NSObject, UIViewControllerTransitioningDelegate, UIViewCon
     weak var originViewController : UIViewController?
     var controllerToPresent : () -> (UIViewController)
 
+    var dragRange : ClosedRange<CGFloat> = 0 ... 0
+
     init(originView : UIView, originViewController : UIViewController, controllerToPresent : @escaping () -> (UIViewController)) {
         self.originView = originView
         self.originViewController = originViewController
         self.controllerToPresent = controllerToPresent
+        self.dragRange = 0 ... (originViewController.view.frame.size.height - self.originView.center.y)
         super.init()
 
-        self.originView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:))))
+        self.originView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(self.handlePan(_:))))
     }
 
-    @IBAction func handleTap(_: UITapGestureRecognizer) {
-        let controller = controllerToPresent()
-        controller.transitioningDelegate = self
-        originViewController?.present(controller, animated: true, completion: nil)
+    @IBAction func handlePan(_ recognizer: UIPanGestureRecognizer) {
+        if recognizer.state == .began {
+            let controller = controllerToPresent()
+            controller.transitioningDelegate = self
+            originViewController?.present(controller, animated: true, completion: nil)
+        }
+
+        let translation = recognizer.translation(in: self.originView)
+        let progress = dragRange.clampedFraction(value: translation.y)
+
+
     }
 
     // MARK: - UIViewControllerTransitioningDelegate

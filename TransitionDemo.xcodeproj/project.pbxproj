@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BFC314542146F2130040748A /* ClosedRange+Clamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC314532146F2130040748A /* ClosedRange+Clamp.swift */; };
 		BF_230648118126 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FR_612882647252 /* Assets.xcassets */; };
 		BF_257453652998 /* ContentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FR_320650382751 /* ContentViewController.xib */; };
 		BF_326149600812 /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_661912933221 /* ContentViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BFC314532146F2130040748A /* ClosedRange+Clamp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ClosedRange+Clamp.swift"; sourceTree = "<group>"; };
 		FR_320650382751 /* ContentViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContentViewController.xib; sourceTree = "<group>"; };
 		FR_513551976209 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FR_557980261560 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -29,6 +31,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
+		BFC314522146F1FE0040748A /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				BFC314532146F2130040748A /* ClosedRange+Clamp.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 		G_2052748511162 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -48,6 +58,7 @@
 				FR_821202004271 /* Info.plist */,
 				VG_557980261560 /* LaunchScreen.storyboard */,
 				G_2052748511162 /* Controller */,
+				BFC314522146F1FE0040748A /* Helper */,
 			);
 			path = TransitionDemo;
 			sourceTree = "<group>";
@@ -131,6 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF_807652834059 /* AppDelegate.swift in Sources */,
+				BFC314542146F2130040748A /* ClosedRange+Clamp.swift in Sources */,
 				BF_326149600812 /* ContentViewController.swift in Sources */,
 				BF_859934745219 /* StartViewController.swift in Sources */,
 			);
