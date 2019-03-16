@@ -18,11 +18,17 @@ class ZoomBehaviour : NSObject, UIViewControllerTransitioningDelegate, UIViewCon
         self.originView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(self.handlePan(_:))))
     }
 
+    func presentController() {
+        let controller = controllerToPresent()
+        controller.transitioningDelegate = self
+        originViewController?.present(controller, animated: true, completion: nil)
+    }
+    
+    // MARK: - Gesture recognizers
+
     @IBAction func handlePan(_ recognizer: UIPanGestureRecognizer) {
         if recognizer.state == .began {
-            let controller = controllerToPresent()
-            controller.transitioningDelegate = self
-            originViewController?.present(controller, animated: true, completion: nil)
+            self.presentController()
         }
 
         let translation = recognizer.translation(in: self.originView)
@@ -82,6 +88,9 @@ class ZoomBehaviour : NSObject, UIViewControllerTransitioningDelegate, UIViewCon
 
             animator.addAnimations {
                 toView.frame = toViewFrame
+                for i in 1...2 {
+                    toView.transform = CGAffineTransform(rotationAngle: .pi * CGFloat(i))
+                }
             }
 
         case .dismiss:
