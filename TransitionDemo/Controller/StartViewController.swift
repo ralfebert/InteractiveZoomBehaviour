@@ -1,6 +1,6 @@
 import UIKit
 
-class ZoomBehaviour : NSObject, UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning {
+class ZoomBehaviour : NSObject, UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning, UIViewControllerInteractiveTransitioning {
 
     var originView : UIView
     weak var originViewController : UIViewController?
@@ -39,7 +39,7 @@ class ZoomBehaviour : NSObject, UIViewControllerTransitioningDelegate, UIViewCon
         let translation = recognizer.translation(in: self.originView)
         let progress = dragRange.clampedFraction(value: translation.y)
 
-
+        self.animator?.fractionComplete = progress
     }
 
     // MARK: - UIViewControllerTransitioningDelegate
@@ -122,6 +122,12 @@ class ZoomBehaviour : NSObject, UIViewControllerTransitioningDelegate, UIViewCon
 
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         self.interruptibleAnimator(using: transitionContext).startAnimation()
+    }
+    
+    // MARK: - UIViewControllerInteractiveTransitioning
+    
+    func startInteractiveTransition(_ transitionContext: UIViewControllerContextTransitioning) {
+        let _ = self.interruptibleAnimator(using: transitionContext)
     }
 
 }
