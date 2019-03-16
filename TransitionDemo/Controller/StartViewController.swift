@@ -15,7 +15,6 @@ class ZoomBehaviour : NSObject, UIViewControllerTransitioningDelegate, UIViewCon
         self.dragRange = 0 ... (originViewController.view.frame.size.height - self.originView.center.y)
         super.init()
 
-        self.originView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.handleTap)))
         self.originView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(self.handlePan(_:))))
     }
 
@@ -27,10 +26,6 @@ class ZoomBehaviour : NSObject, UIViewControllerTransitioningDelegate, UIViewCon
     
     // MARK: - Gesture recognizers
 
-    @IBAction func handleTap() {
-        self.presentController()
-    }
-
     @IBAction func handlePan(_ recognizer: UIPanGestureRecognizer) {
         if recognizer.state == .began {
             self.presentController()
@@ -40,6 +35,13 @@ class ZoomBehaviour : NSObject, UIViewControllerTransitioningDelegate, UIViewCon
         let progress = dragRange.clampedFraction(value: translation.y)
 
         self.animator?.fractionComplete = progress
+        
+        if recognizer.state == .ended {
+            let complete = progress > 0.5
+            self.animator?.isReversed = !complete
+            self.animator?.startAnimation()
+        }
+
     }
 
     // MARK: - UIViewControllerTransitioningDelegate
@@ -63,6 +65,10 @@ class ZoomBehaviour : NSObject, UIViewControllerTransitioningDelegate, UIViewCon
         return self
     }
 
+    func interactionControllerForPresentation(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        return self
+    }
+    
     // MARK: - UIViewControllerAnimatedTransitioning
 
     private var animator : UIViewPropertyAnimator?
@@ -103,13 +109,16 @@ class ZoomBehaviour : NSObject, UIViewControllerTransitioningDelegate, UIViewCon
 
             animator.addAnimations {
                 fromView.frame = originFrame
+                for i in 1...2 {
+                    fromView.transform = CGAffineTransform(rotationAngle: .pi * CGFloat(i))
+                }
             }
 
         }
 
-        animator.addCompletion { (_) in
+        animator.addCompletion { (pos) in
             self.animator = nil
-            transitionContext.completeTransition(true)
+            transitionContext.completeTransition(pos == .end)
         }
 
         self.animator = animator
