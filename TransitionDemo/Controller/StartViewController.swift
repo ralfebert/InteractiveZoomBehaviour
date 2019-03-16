@@ -72,6 +72,9 @@ class ZoomBehaviour : NSObject, UIViewControllerTransitioningDelegate, UIViewCon
 
             animator.addAnimations {
                 toView.frame = toViewFrame
+                for i in 1...2 {
+                    toView.transform = CGAffineTransform(rotationAngle: .pi * CGFloat(i))
+                }
             }
 
         case .dismiss:
@@ -79,6 +82,9 @@ class ZoomBehaviour : NSObject, UIViewControllerTransitioningDelegate, UIViewCon
 
             animator.addAnimations {
                 fromView.frame = originFrame
+                for i in 1...2 {
+                    fromView.transform = CGAffineTransform(rotationAngle: .pi * CGFloat(i))
+                }
             }
 
         }
